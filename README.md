@@ -19,6 +19,7 @@ Los objetivo de este dojo son los siguientes:
 * Explicación que es un dojo.
 * Presentación de kata que vamos a desarrollar.
 * Desarrollo del dojo
+  * El dojo será de tipo kake. 
   * Se programa en parejas.
   * 3 turnos de 25 min. con 5 de descanso entre cada turno.
   * Cada turno se cambia de pareja.

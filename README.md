@@ -15,7 +15,7 @@ Los objetivo de este dojo son los siguientes:
 
 ## Dinámica
 
-* ¿Qué dudas han surgido en la implementación del test?
+* ¿Qué dudas han surgido en la implementación del problema previo?
 * Explicación que es un dojo.
 * Presentación de kata que vamos a desarrollar.
 * Desarrollo del dojo

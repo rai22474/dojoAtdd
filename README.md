@@ -19,7 +19,7 @@ Los objetivo de este dojo son los siguientes:
 * Explicación que es un dojo.
 * Presentación de kata que vamos a desarrollar.
 * Desarrollo del dojo
-  * El dojo será de tipo kake. 
+  * El dojo será de tipo kake.
   * Se programa en parejas.
   * 3 turnos de 25 min. con 5 de descanso entre cada turno.
   * Cada turno se cambia de pareja.
@@ -28,6 +28,11 @@ Los objetivo de este dojo son los siguientes:
 ## Kata
 
 Se ha elegido un kata de la lista de katas clásicos de la lista de Dave Thomas http://codekata.com/kata/kata09-back-to-the-checkout es un kata que consiste en añadir productos a la cuenta de un supermercado. Existe una lista de precios cerrada con la que se calculara el valor total de la cuenta del supermercado.
+
+## Requisitos del sistema
+
+* NodeJS: ~4.4.5
+* NPM: ~2.15.5
 
 ## Implementación
 

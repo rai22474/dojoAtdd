@@ -34,6 +34,26 @@ Se ha elegido un kata de la lista de katas clásicos de la lista de Dave Thomas 
 * NodeJS: ~4.4.5
 * NPM: ~2.15.5
 
+## Ejercicio previo
+
+El ejecicio previo sirve para familiarizarse con las tecnologías sobre las que va a versar el coding dojo. 
+
+Cada participante deberá hacer un fork de este proyecto de github  
+
+```
+#language: en
+
+Feature: Heartbeat
+    In order to check that the server is up
+    As a client application
+    I want to know the server status
+
+    Scenario: GET Heartbeat
+        When I request the heartbeat
+        Then the response code must be 200
+        
+```
+
 ## Implementación
 
 La implementación se hará usando un servicio rest implementado en nodejs. El servicio implementa el siguiente API:
@@ -72,3 +92,41 @@ Response 201
 Location: /api/checkout/{id}/items/{id}
 
 ```
+
+## Uso
+
+```
+npm install
+
+```
+
+Ejecutar los test de unitarios
+
+```
+npm run test
+
+```
+
+Comprobación de la calidad del código
+
+```
+npm run jshint
+
+```
+
+Arrancar el servidor
+
+```
+
+npm start
+
+```
+
+Pasar las pruebas de aceptación
+
+```
+
+npm run cucumber
+
+```
+

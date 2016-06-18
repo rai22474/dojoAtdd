@@ -14,8 +14,10 @@
   },
   "homepage": "https://github.com/rai22474/dojoAtdd#readme",
   "dependencies": {
-    "restify": "4.1.0",
-    "q": "1.4.1"
+    "lodash": "3.10.1",
+    "q": "1.4.1",
+    "request-promise": "3.0.0",
+    "restify": "4.1.0"
   },
   "devDependencies": {
     "chai": "3.5.0",

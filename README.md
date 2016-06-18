@@ -29,6 +29,9 @@ Los objetivo de este dojo son los siguientes:
 
 Se ha elegido un kata de la lista de katas clásicos de la lista de Dave Thomas http://codekata.com/kata/kata09-back-to-the-checkout es un kata que consiste en añadir productos a la cuenta de un supermercado. Existe una lista de precios cerrada con la que se calculara el valor total de la cuenta del supermercado.
 
+[Las features no implemtadas propuestas para el dojo](https://github.com/rai22474/dojoAtdd/wiki/Features-propuestas-para-el-dojo)
+
+
 ## Requisitos del sistema
 
 * NodeJS: ~4.4.5

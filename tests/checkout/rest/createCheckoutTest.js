@@ -13,7 +13,38 @@ describe('Create a new checkout', () => {
 
         const responseMock = sinon.mock(response);
 
-        responseMock.expects('send').withArgs(201, sinon.match.any);
+        responseMock.expects('send').once().withArgs(201, sinon.match.any);
+        createCheckout(request, response, () => {
+            responseMock.verify();
+            done();
+        });
+    });
+
+    it('Should call the next function', done => {
+        const request = createRequest(),
+            response = createResponse();
+
+        const nextMock = sinon.mock();
+        nextMock.once();
+
+        createCheckout(request, response, nextMock);
+        nextMock.verify();
+        done();
+    });
+
+    it('Should return the checkout total', done => {
+        const request = createRequest(),
+            response = createResponse();
+
+        const responseMock = sinon.mock(response);
+
+        responseMock.expects('send').once().withArgs(sinon.match.any,{
+            total: {
+                value: 0,
+                currency: 'EUR'
+            }
+        });
+
         createCheckout(request, response, () => {
             responseMock.verify();
             done();

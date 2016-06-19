@@ -1,6 +1,7 @@
 'use strict';
 
 require('chai').should();
+const _ = require('lodash');
 
 module.exports = () => {
 
@@ -9,6 +10,13 @@ module.exports = () => {
 
         const response = world.getValue('checkoutCreationResponse');
         response.statusCode.should.equal(201);
+
+        response.body.should.be.deep.equal({
+            total: {
+                value: 0,
+                currency: 'EUR'
+            }
+        });
 
         done();
     });

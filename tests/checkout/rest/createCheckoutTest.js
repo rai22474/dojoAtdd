@@ -57,7 +57,7 @@ describe('Create a new checkout', () => {
 
         const responseMock = sinon.mock(response);
 
-        responseMock.expects('setHeader').once().withArgs('Location', 'http://localhost:3000/api/checkouts/');
+        responseMock.expects('setHeader').once().withArgs('Location', 'http://localhost:3000/api/checkouts/1');
 
         createCheckout(request, response, () => {
             responseMock.verify();
@@ -66,18 +66,17 @@ describe('Create a new checkout', () => {
     });
 
     function createRequest() {
-        return {};
+        return {
+            body: {code: '1'}
+        };
     }
 
     function createResponse() {
-
         return {
             send: () => {
             },
             setHeader: () => {
             }
         };
-
     }
-
 });

@@ -4,18 +4,21 @@ const requestPromise = require('request-promise');
 
 module.exports = () => {
 
-    this.When(/^a supermarket clerk want to start to sell products to a customer$/, function (done) {
+    this.When(/^a supermarket clerk want to start a sale with code "([^"]*)"$/, function (code, done) {
         const world = this;
         const options = {
             method: 'POST',
             uri: 'http://localhost:3000/api/checkouts',
-            json: true,
+            json: {
+                code: code
+            },
             resolveWithFullResponse: true
         };
 
         requestPromise(options)
             .then(function (response) {
                 world.publishValue('checkoutCreationResponse', response);
+                world.publishValue('code', code);
                 done();
             })
             .catch(function (err) {

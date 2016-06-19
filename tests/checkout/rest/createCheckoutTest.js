@@ -38,7 +38,7 @@ describe('Create a new checkout', () => {
 
         const responseMock = sinon.mock(response);
 
-        responseMock.expects('send').once().withArgs(sinon.match.any,{
+        responseMock.expects('send').once().withArgs(sinon.match.any, {
             total: {
                 value: 0,
                 currency: 'EUR'
@@ -51,15 +51,33 @@ describe('Create a new checkout', () => {
         });
     });
 
+    it('Should return the location header', done => {
+        const request = createRequest(),
+            response = createResponse();
+
+        const responseMock = sinon.mock(response);
+
+        responseMock.expects('setHeader').once().withArgs('Location', 'http://localhost:3000/api/checkouts/');
+
+        createCheckout(request, response, () => {
+            responseMock.verify();
+            done();
+        });
+    });
+
     function createRequest() {
         return {};
     }
 
     function createResponse() {
+
         return {
             send: () => {
+            },
+            setHeader: () => {
             }
         };
+
     }
 
 });

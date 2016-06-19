@@ -8,7 +8,7 @@ module.exports = () => {
         const world = this;
         const options = {
             method: 'POST',
-            uri: 'http://localhost:3000/api/checkout',
+            uri: 'http://localhost:3000/api/checkouts',
             json: true,
             resolveWithFullResponse: true
         };

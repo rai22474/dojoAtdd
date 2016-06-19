@@ -18,6 +18,8 @@ module.exports = () => {
             }
         });
 
+        response.headers.location.substring(0,36).should.be.equal('http://localhost:3000/api/checkouts/');
+
         done();
     });
 

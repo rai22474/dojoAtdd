@@ -6,7 +6,7 @@ const server = require('./server'),
 let serverInstance = server.create();
 
 server.start(serverInstance, 3000).tap(() => {
-    serverInstance.post('/api/checkout', createCheckout);
+    serverInstance.post('/api/checkouts', createCheckout);
 
     console.log('Up and running');
 });

@@ -15,7 +15,7 @@ module.exports = () => {
 
         requestPromise(options)
             .then(function (response) {
-                world.publishValue("checkoutCreationResponse", response);
+                world.publishValue('checkoutCreationResponse', response);
                 done();
             })
             .catch(function (err) {

@@ -5,6 +5,6 @@ Feature: Create new checkout
   As a clerk
   I want to create new empty checkout
 
-Scenario: Create new empty checkout
-  When a supermarket clerk want to start a sale with code "1"
-  Then a new checkout is created with "0 EUR" in the total value
+  Scenario: Create new empty checkout
+    When a supermarket clerk want to start a sale with code "1"
+    Then a new checkout is created with "0 EUR" in the total value

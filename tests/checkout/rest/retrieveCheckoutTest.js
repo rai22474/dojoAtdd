@@ -1,9 +1,14 @@
 'use strict';
 
-const retrieveCheckout = require('../../../src/checkout/rest/retrieveCheckout'),
-    sinon = require('sinon');
+const sinon = require('sinon'),
+    proxyquire = require('proxyquire');
 
 require('chai').should();
+
+let repositoryStub = {},
+    retrieveCheckout = proxyquire('../../../src/checkout/rest/retrieveCheckout', {
+        '../repository/checkoutRepository': repositoryStub
+    });
 
 describe('Retrieve an existing checkout', () => {
 
@@ -12,8 +17,27 @@ describe('Retrieve an existing checkout', () => {
             response = createResponse();
 
         const responseMock = sinon.mock(response);
+        repositoryStub.retrieve = function() {
+            return {};
+        };
 
         responseMock.expects('send').once().withArgs(200, sinon.match.any);
+        retrieveCheckout(request, response, () => {
+            responseMock.verify();
+            done();
+        });
+    });
+
+    it('Should return 404 status code when there is no checkout created', done => {
+        const request = createRequest(),
+            response = createResponse();
+
+        const responseMock = sinon.mock(response);
+        repositoryStub.retrieve = function() {
+            return undefined;
+        };
+
+        responseMock.expects('send').once().withArgs(404);
         retrieveCheckout(request, response, () => {
             responseMock.verify();
             done();
@@ -33,15 +57,17 @@ describe('Retrieve an existing checkout', () => {
     });
 
     function createRequest() {
-        return {};
+        return {
+            params: {
+                checkoutId: 1
+            },
+        };
     }
 
     function createResponse() {
         return {
-            send: () => {
-            },
-            setHeader: () => {
-            }
+            send: () => {},
+            setHeader: () => {}
         };
     }
 });

@@ -1,9 +1,18 @@
 'use strict';
 
-const createCheckout = require('../../../src/checkout/rest/createCheckout'),
-    sinon = require('sinon');
+const sinon = require('sinon'),
+    proxyquire = require('proxyquire');
 
 require('chai').should();
+
+let repositoryStub = {
+        create: () => {
+            return {};
+        }
+    },
+    createCheckout = proxyquire('../../../src/checkout/rest/createCheckout', {
+        '../repository/checkoutRepository': repositoryStub
+    });
 
 describe('Create a new checkout', () => {
 
@@ -38,12 +47,7 @@ describe('Create a new checkout', () => {
 
         const responseMock = sinon.mock(response);
 
-        responseMock.expects('send').once().withArgs(sinon.match.any, {
-            total: {
-                value: 0,
-                currency: 'EUR'
-            }
-        });
+        responseMock.expects('send').once().withArgs(sinon.match.any, {});
 
         createCheckout(request, response, () => {
             responseMock.verify();
@@ -67,16 +71,16 @@ describe('Create a new checkout', () => {
 
     function createRequest() {
         return {
-            body: {code: '1'}
+            body: {
+                code: '1'
+            }
         };
     }
 
     function createResponse() {
         return {
-            send: () => {
-            },
-            setHeader: () => {
-            }
+            send: () => {},
+            setHeader: () => {}
         };
     }
 });

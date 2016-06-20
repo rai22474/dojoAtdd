@@ -7,7 +7,7 @@ require('chai').should();
 
 let repositoryStub = {},
     retrieveCheckout = proxyquire('../../../src/checkout/rest/retrieveCheckout', {
-        '../repository/checkoutRepository': repositoryStub
+        '../domain/checkoutsRepository': repositoryStub
     });
 
 describe('Retrieve an existing checkout', () => {

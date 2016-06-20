@@ -11,7 +11,7 @@ let repositoryStub = {
         }
     },
     createCheckout = proxyquire('../../../src/checkout/rest/createCheckout', {
-        '../repository/checkoutRepository': repositoryStub
+        '../domain/checkoutsRepository': repositoryStub
     });
 
 describe('Create a new checkout', () => {

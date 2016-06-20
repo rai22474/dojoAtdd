@@ -14,11 +14,11 @@ function create(id) {
 }
 
 function retrieve(id) {
-  return checkoutMap[id];
+    return checkoutMap[id];
 }
 
 function clear() {
-  checkoutMap = {};
+    checkoutMap = {};
 }
 
 module.exports = {

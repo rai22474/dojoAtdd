@@ -1,6 +1,6 @@
 'use strict';
 
-const checkoutRepository = require('../repository/checkoutRepository');
+const checkoutRepository = require('../domain/checkoutsRepository');
 
 module.exports = function (req, res, next) {
 

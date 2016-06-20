@@ -2,7 +2,7 @@
 
 const requestPromise = require('request-promise');
 
-module.exports = () => {
+module.exports = function() {
 
     this.Given(/^an existing checkout with code "([^"]*)"$/, function (code, done) {
         const world = this;

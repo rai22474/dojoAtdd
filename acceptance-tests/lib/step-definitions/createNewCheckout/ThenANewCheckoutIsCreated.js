@@ -3,7 +3,7 @@
 require('chai').should();
 const _ = require('lodash');
 
-module.exports = () => {
+module.exports = function() {
 
     this.Then(/^a new checkout is created with "([^"]*)" in the total value$/, function (total, done) {
         const world = this;

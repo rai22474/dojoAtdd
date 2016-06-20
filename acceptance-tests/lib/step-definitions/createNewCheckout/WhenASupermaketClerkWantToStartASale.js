@@ -2,9 +2,9 @@
 
 const requestPromise = require('request-promise');
 
-module.exports = () => {
+module.exports = function() {
 
-    this.When(/^a supermarket clerk want to start a sale with code "([^"]*)"$/, function (code, done) {
+    this.When(/^a supermarket clerk want to start a sale with code "([^"]*)"$/, function(code, done) {
         const world = this;
         const options = {
             method: 'POST',
@@ -16,12 +16,12 @@ module.exports = () => {
         };
 
         requestPromise(options)
-            .then(function (response) {
+            .then(function(response) {
                 world.publishValue('checkoutCreationResponse', response);
                 world.publishValue('code', code);
                 done();
             })
-            .catch(function (err) {
+            .catch(function(err) {
                 done(err);
             });
     });

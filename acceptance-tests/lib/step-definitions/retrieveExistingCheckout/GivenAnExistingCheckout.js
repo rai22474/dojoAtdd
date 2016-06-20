@@ -20,6 +20,8 @@ module.exports = function() {
                 response.statusCode.should.equal(201);
                 response.headers.location.should.be.equal('http://localhost:3000/api/checkouts/' + code);
 
+                world.publishValue('checkoutCreationResponse', response);
+
                 done();
             })
             .catch(function (err) {

@@ -22,9 +22,8 @@ describe('The Checkout Repository', () => {
     };
 
     it('Should create a new checkout given an identifier', done => {
-        let id = fixture.id;
-
-        let checkout = checkoutRepository.create(id);
+        const id = fixture.id;
+        const checkout = checkoutRepository.create(id);
 
         checkout.should.deep.equal(fixture.checkout);
 
@@ -32,10 +31,10 @@ describe('The Checkout Repository', () => {
     });
 
     it('Should retrieve a previously checkout given an identifier', done => {
-        let id = fixture.id;
+        const id = fixture.id;
 
         checkoutRepository.create(id);
-        let checkout = checkoutRepository.retrieve(id);
+        const checkout = checkoutRepository.retrieve(id);
 
         checkout.should.deep.equal(fixture.checkout);
 
@@ -43,9 +42,8 @@ describe('The Checkout Repository', () => {
     });
 
     it('Should retrieve an undefined checkout when it have not been created previously', done => {
-        let id = fixture.id;
-
-        let checkout = checkoutRepository.retrieve(id);
+        const id = fixture.id;
+        const checkout = checkoutRepository.retrieve(id);
 
         expect(checkout).to.be.an('undefined');
 

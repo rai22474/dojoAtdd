@@ -1,7 +1,6 @@
 'use strict';
 
 require('chai').should();
-const _ = require('lodash');
 
 module.exports = function() {
 

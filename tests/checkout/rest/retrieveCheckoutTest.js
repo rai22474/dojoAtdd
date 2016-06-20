@@ -60,7 +60,7 @@ describe('Retrieve an existing checkout', () => {
         return {
             params: {
                 checkoutId: 1
-            },
+            }
         };
     }
 

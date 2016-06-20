@@ -1,5 +1,11 @@
 'use strict';
 
+module.exports = {
+    create: create,
+    retrieve: retrieve,
+    clear: clear
+};
+
 let checkoutMap = {};
 
 function create(id) {
@@ -21,8 +27,3 @@ function clear() {
     checkoutMap = {};
 }
 
-module.exports = {
-    create: create,
-    retrieve: retrieve,
-    clear: clear
-};

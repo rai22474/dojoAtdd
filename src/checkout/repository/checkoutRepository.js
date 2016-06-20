@@ -1,6 +1,6 @@
 'use strict';
 
-const checkoutMap = {};
+let checkoutMap = {};
 
 function create(id) {
     checkoutMap[id] = {
@@ -13,6 +13,16 @@ function create(id) {
     return checkoutMap[id];
 }
 
+function retrieve(id) {
+  return checkoutMap[id];
+}
+
+function clear() {
+  checkoutMap = {};
+}
+
 module.exports = {
-    create: create
+    create: create,
+    retrieve: retrieve,
+    clear: clear
 };

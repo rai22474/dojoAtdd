@@ -9,12 +9,13 @@ module.exports = function() {
         const options = {
             method: 'GET',
             uri: 'http://localhost:3000/api/checkouts/' + code,
-            resolveWithFullResponse: true
+            resolveWithFullResponse: true,
+            simple: false
         };
 
         requestPromise(options)
             .then(function (response) {
-                world.publishValue('checkoutConsultResponse', response);
+                world.publishValue('checkoutRequestResponse', response);
                 done();
             })
             .catch(function (err) {

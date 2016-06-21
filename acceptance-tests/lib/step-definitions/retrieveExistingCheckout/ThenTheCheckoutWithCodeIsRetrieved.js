@@ -8,9 +8,9 @@ module.exports = function() {
       const world = this;
 
         let checkoutCreationResponse = world.getValue('checkoutCreationResponse').body;
-        let checkoutConsultResponse = JSON.parse(world.getValue('checkoutConsultResponse').body);
+        let checkoutRequestResponse = JSON.parse(world.getValue('checkoutRequestResponse').body);
 
-        checkoutConsultResponse.should.deep.equal(checkoutCreationResponse);
+        checkoutRequestResponse.should.deep.equal(checkoutCreationResponse);
 
         done();
     });

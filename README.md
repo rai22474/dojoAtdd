@@ -15,7 +15,7 @@ Los objetivo de este dojo son los siguientes:
 
 ## Dinámica
 
-Los participantes deben estar familizados con las herramientas y librerías del dojo para poder sacar el maximo partido del mismo; para ello deben implementar la feature descrita en la sección titulada "Ejercicio previo".
+Los participantes deben estar familizados con las herramientas y librerías del dojo para poder sacar el maximo partido del mismo; para ello deben implementar la feature descrita en la sección titulada "Ejercicio previo". 
 
 El desarrollo del dojo será el siguiente:
 
@@ -50,6 +50,8 @@ Feature: Heartbeat
 ```
 
 Después de hacer el fork, para poder ejecutar el programa hay que seguir las instrucciones que aparecen en la secciones posteriores.
+
+En el dojo usaremos [cucumber](https://cucumber.io). En su página hay gran cantidad muy útil a la hora de poder implementar este ejercicio. 
 
 ## Requisitos del sistema
 

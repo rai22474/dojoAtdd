@@ -15,6 +15,10 @@ Los objetivo de este dojo son los siguientes:
 
 ## Dinámica
 
+Los participantes para poder sacar el maximo partido del dojo deben estar familizados con las herramientas y librerías del mismo, para ello deben implementar la feature descrita en la sección que titulada ejercicio previo.
+
+El desarrollo del dojo será el siguiente:
+
 * ¿Qué dudas han surgido en la implementación del problema previo?
 * Explicación que es un dojo.
 * Presentación de kata que vamos a desarrollar.
@@ -25,23 +29,11 @@ Los objetivo de este dojo son los siguientes:
   * Cada turno se cambia de pareja.
 * 25 min. de retrospectiva, feedback y preguntas.
 
-## Kata
-
-Se ha elegido un kata de la lista de katas clásicos de la lista de Dave Thomas http://codekata.com/kata/kata09-back-to-the-checkout es un kata que consiste en añadir productos a la cuenta de un supermercado. Existe una lista de precios cerrada con la que se calculara el valor total de la cuenta del supermercado.
-
-[Las features no implementadas propuestas para el dojo](https://github.com/rai22474/dojoAtdd/wiki/Features-propuestas-para-el-dojo)
-
-
-## Requisitos del sistema
-
-* NodeJS: ~4.4.5
-* NPM: ~2.15.5
-
 ## Ejercicio previo
 
 El ejecicio previo sirve para familiarizarse con las tecnologías sobre las que va a versar el coding dojo. 
 
-Cada participante deberá hacer un fork de este proyecto de github  
+Cada participante deberá hacer un fork de este proyecto e implementar la siguiente feature: 
 
 ```
 #language: en
@@ -56,6 +48,61 @@ Feature: Heartbeat
         Then the response code must be 200
         
 ```
+
+Después de hacer un fork, para poder ejecutar el programa hay que seguir las instrucciones que aparecen en la secciones posteriores.
+
+## Requisitos del sistema
+
+Antés de empezar el sistema debe tener instalada una versión actualizada de nodejs. Se puede encontrar en https://nodejs.org/en .
+
+* NodeJS: ~4.4.5
+* NPM: ~2.15.5
+
+## Uso
+
+El primer paso es instalar las librerías que se necesitan para ejecutar el dojo para ello hay que ejecutar:
+
+```
+npm install
+
+```
+
+Para arrancar el servidor hay que ejecutar:
+
+```
+
+npm start
+
+```
+
+Una vez arrancado en servidor, desde otro terminal para pasar las pruebas de aceptación:
+
+```
+
+npm run cucumber
+
+```
+
+Además para ejecutar los test de unitarios:
+
+```
+npm run test
+
+```
+
+Comprobación de la calidad del código:
+
+```
+npm run jshint
+
+```
+
+## Kata
+
+Se ha elegido un kata de la lista de katas clásicos de la lista de Dave Thomas http://codekata.com/kata/kata09-back-to-the-checkout es un kata que consiste en añadir productos a la cuenta de un supermercado. Existe una lista de precios cerrada con la que se calculara el valor total de la cuenta del supermercado.
+
+[Las features no implementadas propuestas para el dojo](https://github.com/rai22474/dojoAtdd/wiki/Features-propuestas-para-el-dojo)
+
 
 ## Implementación
 
@@ -96,40 +143,5 @@ Location: /api/checkout/{id}/items/{id}
 
 ```
 
-## Uso
 
-```
-npm install
-
-```
-
-Ejecutar los test de unitarios
-
-```
-npm run test
-
-```
-
-Comprobación de la calidad del código
-
-```
-npm run jshint
-
-```
-
-Arrancar el servidor
-
-```
-
-npm start
-
-```
-
-Pasar las pruebas de aceptación
-
-```
-
-npm run cucumber
-
-```
 

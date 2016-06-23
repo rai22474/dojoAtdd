@@ -51,7 +51,7 @@ Feature: Heartbeat
 
 Después de hacer el fork, para poder ejecutar el programa hay que seguir las instrucciones que aparecen en la secciones posteriores.
 
-En el dojo usaremos [cucumber](https://cucumber.io). En su página hay gran cantidad muy útil a la hora de poder implementar este ejercicio. 
+En el dojo usaremos [cucumber](https://cucumber.io). En su página hay gran cantidad de información muy útil a la hora de poder implementar este ejercicio. 
 
 ## Requisitos del sistema
 

@@ -1,4 +1,4 @@
-# dojoAtdd
+# dojo Atdd
 
 ## Objetivos
 

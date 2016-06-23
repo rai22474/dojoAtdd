@@ -4,7 +4,7 @@
 
 Los objetivo de este dojo son los siguientes:
 
-* Demostrar cómo se desarrolla usando ATDD.
+* Demostrar cómo desarrollar usando ATDD.
 * Duración unas 2 horas.
 * Descubrir mediante un caso práctico ventajas e inconvenientes.
 
@@ -15,19 +15,19 @@ Los objetivo de este dojo son los siguientes:
 
 ## Dinámica
 
-Los participantes para poder sacar el maximo partido del dojo deben estar familizados con las herramientas y librerías del mismo, para ello deben implementar la feature descrita en la sección que titulada ejercicio previo.
+Los participantes deben estar familizados con las herramientas y librerías del dojo para poder sacar el maximo partido del mismo; para ello deben implementar la feature descrita en la sección titulada "Ejercicio previo".
 
 El desarrollo del dojo será el siguiente:
 
 * ¿Qué dudas han surgido en la implementación del problema previo?
-* Explicación que es un dojo.
-* Presentación de kata que vamos a desarrollar.
+* ¿Qué es un coding dojo?
+* Presentación del kata que vamos a desarrollar.
 * Desarrollo del dojo
   * El dojo será de tipo kake.
   * Se programa en parejas.
-  * 3 turnos de 25 min. con 5 de descanso entre cada turno.
-  * Cada turno se cambia de pareja.
-* 25 min. de retrospectiva, feedback y preguntas.
+  * Se divide en 3 turnos de 25min. con 5min. de descanso entre cada turno.
+  * Después de cada turno se cambia de pareja.
+* Retrospectiva, feedback y preguntas (25min.).
 
 ## Ejercicio previo
 
@@ -49,7 +49,7 @@ Feature: Heartbeat
         
 ```
 
-Después de hacer un fork, para poder ejecutar el programa hay que seguir las instrucciones que aparecen en la secciones posteriores.
+Después de hacer el fork, para poder ejecutar el programa hay que seguir las instrucciones que aparecen en la secciones posteriores.
 
 ## Requisitos del sistema
 
@@ -60,7 +60,7 @@ Antés de empezar el sistema debe tener instalada una versión actualizada de no
 
 ## Uso
 
-El primer paso es instalar las librerías que se necesitan para ejecutar el dojo para ello hay que ejecutar:
+El primer paso es instalar las librerías que se necesitan para ejecutar el dojo, para ello hay que ejecutar:
 
 ```
 npm install
@@ -75,7 +75,7 @@ npm start
 
 ```
 
-Una vez arrancado en servidor, desde otro terminal para pasar las pruebas de aceptación:
+Una vez arrancado el servidor, desde otro terminal para pasar las pruebas de aceptación:
 
 ```
 
@@ -99,7 +99,7 @@ npm run jshint
 
 ## Kata
 
-Se ha elegido un kata de la lista de katas clásicos de la lista de Dave Thomas http://codekata.com/kata/kata09-back-to-the-checkout es un kata que consiste en añadir productos a la cuenta de un supermercado. Existe una lista de precios cerrada con la que se calculara el valor total de la cuenta del supermercado.
+Se ha elegido un kata de la lista de katas clásicos de la lista de Dave Thomas http://codekata.com/kata/kata09-back-to-the-checkout. Es un kata que consiste en añadir productos a la cuenta de un supermercado. Existe una lista de precios cerrada con la que se calculara el valor total de la cuenta del supermercado.
 
 [Las features no implementadas propuestas para el dojo](https://github.com/rai22474/dojoAtdd/wiki/Features-propuestas-para-el-dojo)
 

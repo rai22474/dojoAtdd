@@ -8,27 +8,6 @@ Los objetivo de este dojo son los siguientes:
 * Duración unas 2 horas.
 * Descubrir mediante un caso práctico ventajas e inconvenientes.
 
-## Audiencia
-
-* Entre 8 y 10 personas.
-* Personas con experiencia en desarrollo de software.
-
-## Dinámica
-
-Los participantes deben estar familizados con las herramientas y librerías del dojo para poder sacar el maximo partido del mismo; para ello deben implementar la feature descrita en la sección titulada "Ejercicio previo". 
-
-El desarrollo del dojo será el siguiente:
-
-* ¿Qué dudas han surgido en la implementación del problema previo?
-* ¿Qué es un coding dojo?
-* Presentación del kata que vamos a desarrollar.
-* Desarrollo del dojo
-  * El dojo será de tipo kake.
-  * Se programa en parejas.
-  * Se divide en 3 turnos de 25min. con 5min. de descanso entre cada turno.
-  * Después de cada turno se cambia de pareja.
-* Retrospectiva, feedback y preguntas (25min.).
-
 ## Ejercicio previo
 
 El ejecicio previo sirve para familiarizarse con las tecnologías sobre las que va a versar el coding dojo. 

@@ -37,9 +37,9 @@
     "npm": ">=2.15.5 <2.16.0"
   },
   "scripts": {
-    "start": "node --max-old-space-size=$NODE_MXM --harmony src/index.js",
-    "test": "./node_modules/.bin/grunt mochacli",
-    "jshint": "./node_modules/.bin/grunt jshint",
-    "cucumber": "node --harmony node_modules/.bin/cucumber-js acceptance-tests/features -r acceptance-tests/lib/step-definitions -t ~@Pending -f pretty"
+    "start": "node --harmony src/index.js",
+    "test": "grunt mochacli",
+    "jshint": "grunt jshint",
+    "cucumber": "cucumber-js acceptance-tests/features -r acceptance-tests/lib/step-definitions -t ~@Pending -f pretty"
   }
 }

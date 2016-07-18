@@ -40,6 +40,6 @@
     "start": "node --harmony src/index.js",
     "test": "grunt mochacli",
     "jshint": "grunt jshint",
-    "cucumber": "cucumber-js acceptance-tests/features -r acceptance-tests/lib/step-definitions -t ~@Pending -f pretty"
+    "cucumber": "node --harmony node_modules/.bin/cucumber-js acceptance-tests/features -r acceptance-tests/lib/step-definitions -t ~@Pending -f pretty"
   }
 }

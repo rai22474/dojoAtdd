@@ -1,25 +1,22 @@
 'use strict';
 
+const moneyStringToObject = require('../../money/moneyStringToObject');
 require('chai').should();
 
-module.exports = function() {
+module.exports = function () {
 
-    this.Then(/^a new checkout is created with "([^"]*)" in the total value$/, function (total, done) {
-        const world = this;
+    this.Then(/^a new checkout is created with "([^"]*)" in the total value$/, function (total) {
 
-        const response = world.getValue('checkoutCreationResponse');
+        const world = this,
+            response = world.getValue('checkoutCreationResponse');
         response.statusCode.should.equal(201);
 
-        response.body.should.be.deep.equal({
-            total: {
-                value: 0,
-                currency: 'EUR'
-            }
-        });
+        const expectedTotal = moneyStringToObject(total);
+        response.body.should.have.property('total')
+            .and.deep.equal(expectedTotal);
 
-        response.headers.location.should.be.equal('http://localhost:3000/api/checkouts/' + world.getValue('code'));
-
-        done();
+        const expectedLocationHeader = 'http://localhost:3000/api/checkouts/' + world.getValue('code');
+        response.headers.should.have.property('location', expectedLocationHeader);
     });
 
 };

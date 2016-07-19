@@ -6,9 +6,9 @@ module.exports = function () {
 
     this.Then(/^the checkout with the code "([^"]*)" is returned$/, function (checkoutId) {
         const world = this,
-            checkoutCreationResponse = world.getValue('checkoutCreationResponse').body,
-            checkoutRequestResponse = JSON.parse(world.getValue('checkoutRequestResponse').body);
+            returnedResponse = world.getValue('checkoutRequestResponse');
 
-        checkoutRequestResponse.should.deep.equal(checkoutCreationResponse);
+        returnedResponse.statusCode.should.equal(200);
+        returnedResponse.body.should.have.property('code', checkoutId);
     });
 };

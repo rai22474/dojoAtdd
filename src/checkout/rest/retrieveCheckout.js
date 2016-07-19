@@ -2,15 +2,22 @@
 
 const checkoutRepository = require('../domain/checkoutsRepository');
 
-module.exports = function(req, res, next) {
-    let id = req.params.checkoutId;
-    let checkout = checkoutRepository.retrieve(id);
+module.exports = function (request, response, next) {
+    const id = request.params.checkoutId,
+        checkout = checkoutRepository.retrieve(id);
 
     if (checkout === undefined) {
-        res.send(404);
+        response.send(404);
     } else {
-        res.send(200, checkout);
+        response.send(200, buildCheckout(id, checkout));
     }
 
     return next();
 };
+
+function buildCheckout(id, checkout) {
+    return {
+        code: id,
+        total: checkout.total
+    };
+}

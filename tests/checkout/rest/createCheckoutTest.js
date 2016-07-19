@@ -5,62 +5,61 @@ const sinon = require('sinon'),
 
 require('chai').should();
 
-let repositoryStub = {
-        create: () => {
-            return {};
-        }
-    },
-    createCheckout = proxyquire('../../../src/checkout/rest/createCheckout', {
-        '../domain/checkoutsRepository': repositoryStub
-    });
-
 describe('Create a new checkout', () => {
 
-    it('Should return 201 status code when create a new checkout', done => {
+    const checkoutId = 1,
+        checkout = {code: checkoutId},
+        repositoryStub = {},
+        createCheckout = proxyquire('../../../src/checkout/rest/createCheckout', {
+            '../domain/checkoutsRepository': repositoryStub
+        });
+
+    it('should return 201 status code when creating a new checkout', done => {
         const request = createRequest(),
             response = createResponse();
+        setupCheckoutCreation();
 
         const responseMock = sinon.mock(response);
+        responseMock.expects('send').once().withArgs(201);
 
-        responseMock.expects('send').once().withArgs(201, sinon.match.any);
         createCheckout(request, response, () => {
             responseMock.verify();
             done();
         });
     });
 
-    it('Should call the next function', done => {
+    it('should return the checkout total', done => {
         const request = createRequest(),
             response = createResponse();
+        setupCheckoutCreation();
+
+        const responseMock = sinon.mock(response);
+        responseMock.expects('send').once().withArgs(sinon.match.any, checkout);
+
+        createCheckout(request, response, () => {
+            responseMock.verify();
+            done();
+        });
+    });
+
+    it('should call the next function', () => {
+        const request = createRequest(),
+            response = createResponse();
+        setupCheckoutCreation();
 
         const nextMock = sinon.mock();
         nextMock.once();
 
         createCheckout(request, response, nextMock);
         nextMock.verify();
-        done();
     });
 
-    it('Should return the checkout total', done => {
+    it('should set the location header', done => {
         const request = createRequest(),
             response = createResponse();
+        setupCheckoutCreation();
 
         const responseMock = sinon.mock(response);
-
-        responseMock.expects('send').once().withArgs(sinon.match.any, {});
-
-        createCheckout(request, response, () => {
-            responseMock.verify();
-            done();
-        });
-    });
-
-    it('Should return the location header', done => {
-        const request = createRequest(),
-            response = createResponse();
-
-        const responseMock = sinon.mock(response);
-
         responseMock.expects('setHeader').once().withArgs('Location', 'http://localhost:3000/api/checkouts/1');
 
         createCheckout(request, response, () => {
@@ -69,18 +68,26 @@ describe('Create a new checkout', () => {
         });
     });
 
+    function setupCheckoutCreation() {
+        const createStub = sinon.stub();
+        createStub.withArgs(checkoutId).returns(checkout);
+        repositoryStub.create = createStub;
+    }
+
     function createRequest() {
         return {
             body: {
-                code: '1'
+                code: checkoutId
             }
         };
     }
 
     function createResponse() {
         return {
-            send: () => {},
-            setHeader: () => {}
+            send: () => {
+            },
+            setHeader: () => {
+            }
         };
     }
 });

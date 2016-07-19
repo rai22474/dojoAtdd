@@ -1,15 +1,10 @@
 'use strict';
 
-const checkoutRepository = require('../../../src/checkout/domain/checkoutsRepository');
-
+const checkoutRepository = require('../../../src/checkout/domain/checkoutsRepository'),
+    expect = require('chai').expect;
 require('chai').should();
-const expect = require('chai').expect;
 
-describe('The Checkout Repository', () => {
-
-    beforeEach(function () {
-        checkoutRepository.clear();
-    });
+describe('Checkouts Repository', () => {
 
     const fixture = {
         id: 1,
@@ -21,32 +16,31 @@ describe('The Checkout Repository', () => {
         }
     };
 
-    it('Should create a new checkout given an identifier', done => {
+    it('should create a new checkout given an identifier', () => {
         const id = fixture.id;
+
         const checkout = checkoutRepository.create(id);
 
         checkout.should.deep.equal(fixture.checkout);
-
-        done();
     });
 
-    it('Should retrieve a previously checkout given an identifier', done => {
+    it('should retrieve a previously checkout given an identifier', () => {
         const id = fixture.id;
 
         checkoutRepository.create(id);
         const checkout = checkoutRepository.retrieve(id);
 
         checkout.should.deep.equal(fixture.checkout);
-
-        done();
     });
 
-    it('Should retrieve an undefined checkout when it have not been created previously', done => {
+    it('should retrieve an undefined checkout when it have not been created previously', () => {
         const id = fixture.id;
+
         const checkout = checkoutRepository.retrieve(id);
 
         expect(checkout).to.be.an('undefined');
-
-        done();
     });
+
+    beforeEach(() => checkoutRepository.clear());
+
 });

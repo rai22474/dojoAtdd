@@ -7,4 +7,4 @@ Feature: Create a new checkout
 
   Scenario: Create a new empty checkout
     When a supermarket clerk wants to start a checkout with code "1"
-    Then a new checkout is created with "0 EUR" in the total value
+    Then a new checkout will be created with "0 EUR" in the total value

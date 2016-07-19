@@ -4,7 +4,7 @@ require('chai').should();
 
 module.exports = function () {
 
-    this.Then(/^the checkout is not found$/, function () {
+    this.Then(/^the checkout won't be found$/, function () {
         const world = this,
             checkoutRequestResponse = world.getValue('checkoutRequestResponse');
 

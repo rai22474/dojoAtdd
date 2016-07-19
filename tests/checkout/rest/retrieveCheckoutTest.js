@@ -5,26 +5,29 @@ const sinon = require('sinon'),
 
 require('chai').should();
 
-const repositoryStub = {},
-    retrieveCheckout = proxyquire('../../../src/checkout/rest/retrieveCheckout', {
-        '../domain/checkoutsRepository': repositoryStub
-    });
-
 describe('Retrieve a checkout', () => {
 
-    const checkoutId = 1;
+    const checkoutId = 1,
+        checkout = {
+            total: {
+                value: 0,
+                currency: 'EUR'
+            }
+        };
 
-    describe('when retrieving an existing checkout', () => {
+    const repositoryStub = {},
+        retrieveCheckout = proxyquire('../../../src/checkout/rest/retrieveCheckout', {
+            '../domain/checkoutsRepository': repositoryStub
+        });
 
-        it('Should return 200 status code', done => {
+    describe('When retrieving an existing checkout', () => {
+
+        it('should return 200 status code', done => {
             const request = createRequest(),
                 response = createResponse();
+            setupCheckoutRetrieval();
 
             const responseMock = sinon.mock(response);
-            repositoryStub.retrieve = function () {
-                return {};
-            };
-
             responseMock.expects('send').once().withArgs(200, sinon.match.any);
             retrieveCheckout(request, response, () => {
                 responseMock.verify();
@@ -32,26 +35,15 @@ describe('Retrieve a checkout', () => {
             });
         });
 
-        it('Should return a checkout with code and total', done => {
+        it('should return a checkout with code and total', done => {
             const request = createRequest(),
                 response = createResponse();
-
-            repositoryStub.retrieve = () => {
-                return {
-                    total: {
-                        value: 0,
-                        currency: 'EUR'
-                    }
-                };
-            };
+            setupCheckoutRetrieval();
 
             const responseMock = sinon.mock(response),
                 expectedCheckoutBody = {
                     code: checkoutId,
-                    total: {
-                        value: 0,
-                        currency: 'EUR'
-                    }
+                    total: checkout.total
                 };
             responseMock.expects('send').once().withArgs(sinon.match.any, expectedCheckoutBody);
 
@@ -61,34 +53,53 @@ describe('Retrieve a checkout', () => {
             });
         });
 
-    });
+        it('should call the next function', () => {
+            const request = createRequest(),
+                response = createResponse();
+            setupCheckoutRetrieval();
 
-    it('Should return 404 status code when there is no checkout created', done => {
-        const request = createRequest(),
-            response = createResponse();
+            const next = sinon.mock();
+            next.once();
 
-        const responseMock = sinon.mock(response);
-        repositoryStub.retrieve = function () {
-            return undefined;
-        };
-
-        responseMock.expects('send').once().withArgs(404);
-        retrieveCheckout(request, response, () => {
-            responseMock.verify();
-            done();
+            retrieveCheckout(request, response, next);
+            next.verify();
         });
+
+        function setupCheckoutRetrieval() {
+            const retrieveStub = sinon.stub();
+            retrieveStub.withArgs(checkoutId).returns(checkout);
+            repositoryStub.retrieve = retrieveStub;
+        }
+
     });
 
-    it('Should call the next function', done => {
-        const request = createRequest(),
-            response = createResponse();
+    describe('when retrieving a non existing checkout', () => {
 
-        const nextMock = sinon.mock();
-        nextMock.once();
+        it('Should return 404 status code when there is no checkout created', done => {
+            const request = createRequest(),
+                response = createResponse();
+            repositoryStub.retrieve = sinon.stub();
 
-        retrieveCheckout(request, response, nextMock);
-        nextMock.verify();
-        done();
+            const responseMock = sinon.mock(response);
+            responseMock.expects('send').once().withArgs(404);
+            retrieveCheckout(request, response, () => {
+                responseMock.verify();
+                done();
+            });
+        });
+
+        it('should call the next function', () => {
+            const request = createRequest(),
+                response = createResponse();
+            repositoryStub.retrieve = sinon.stub();
+
+            const next = sinon.mock();
+            next.once();
+
+            retrieveCheckout(request, response, next);
+            next.verify();
+        });
+
     });
 
     function createRequest() {

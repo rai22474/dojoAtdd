@@ -4,7 +4,7 @@ require('chai').should();
 
 module.exports = function () {
 
-    this.Then(/^the checkout with the code "([^"]*)" is returned$/, function (checkoutId) {
+    this.Then(/^the checkout with the code "([^"]*)" will be returned$/, function (checkoutId) {
         const world = this,
             returnedResponse = world.getValue('checkoutRequestResponse');
 

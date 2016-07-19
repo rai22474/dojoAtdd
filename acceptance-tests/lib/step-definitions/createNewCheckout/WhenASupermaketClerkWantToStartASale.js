@@ -1,28 +1,17 @@
 'use strict';
 
-const requestPromise = require('request-promise');
+const createCheckout = require('../../service/createCheckout');
 
-module.exports = function() {
+module.exports = function () {
 
-    this.When(/^a supermarket clerk want to start a sale with code "([^"]*)"$/, function(code, done) {
+    this.When(/^a supermarket clerk wants to start a sale with code "([^"]*)"$/, function (code) {
         const world = this;
-        const options = {
-            method: 'POST',
-            uri: 'http://localhost:3000/api/checkouts',
-            json: {
-                code: code
-            },
-            resolveWithFullResponse: true
-        };
 
-        requestPromise(options)
-            .then(function(response) {
+        return createCheckout(code)
+            .then(response => {
                 world.publishValue('checkoutCreationResponse', response);
                 world.publishValue('code', code);
-                done();
-            })
-            .catch(function(err) {
-                done(err);
             });
     });
 };
+

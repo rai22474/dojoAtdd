@@ -1,25 +1,16 @@
 'use strict';
 
-const requestPromise = require('request-promise');
+const getCheckout = require('../../service/getCheckout');
 
-module.exports = function() {
+module.exports = function () {
 
-    this.When(/^a supermarket clerk want consult the current state the checkout "([^"]*)"$/, function (code, done) {
+    this.When(/^a supermarket clerk queries the checkout "([^"]*)" current state$/, function (code) {
         const world = this;
-        const options = {
-            method: 'GET',
-            uri: 'http://localhost:3000/api/checkouts/' + code,
-            resolveWithFullResponse: true,
-            simple: false
-        };
 
-        requestPromise(options)
-            .then(function (response) {
+        return getCheckout(code)
+            .then(response => {
                 world.publishValue('checkoutRequestResponse', response);
-                done();
-            })
-            .catch(function (err) {
-                done(err);
             });
     });
 };
+
